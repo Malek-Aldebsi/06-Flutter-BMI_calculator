@@ -22,40 +22,53 @@ class ResultsPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(15.0),
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                'Your Result',
-                style: kTitleTextStyle,
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: ReusableCard(
-              colour: kActiveCardColour,
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    resultText.toUpperCase(),
-                    style: kResultTextStyle,
+        children: [
+          Flexible(
+            child: ListView(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(15.0),
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    'Your Result',
+                    style: kTitleTextStyle,
                   ),
-                  Text(
-                    bmiResult,
-                    style: kBMITextStyle,
+                ),
+                ReusableCard(
+                  colour: kActiveCardColour,
+                  cardChild: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            resultText.toUpperCase(),
+                            style: kResultTextStyle,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            bmiResult,
+                            style: kBMITextStyle,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            interpretation,
+                            textAlign: TextAlign.center,
+                            style: kBodyTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  Text(
-                    interpretation,
-                    textAlign: TextAlign.center,
-                    style: kBodyTextStyle,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           BottomButton(
